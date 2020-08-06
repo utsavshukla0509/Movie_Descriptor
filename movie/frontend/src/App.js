@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
   Route,
-  Redirect,
+  // Redirect,
   Switch,
   BrowserRouter as Router,
 } from "react-router-dom";
@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import MainPage from "./pages/MainPage"
 // import MovieForm from './components/movieForm';
 
 import "./App.css";
@@ -31,8 +32,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route path="/resigter" component={Register} />
               <Route path="/movies" exact component={Movies} />
+              <Route path = "/" exact component={MainPage}/>
 
-              <Redirect exact from="/" to="/movies" />
+              {/* <Redirect exact from="/" to="/movies" /> */}
             </Switch>
             <Footer />
           </div>
