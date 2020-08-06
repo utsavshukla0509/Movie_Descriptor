@@ -62,7 +62,7 @@ class Login extends React.Component {
     const { data, errors } = this.state;
     const { email, password } = data;
     const { authMessage, loggedIn } = this.props;
-    if (loggedIn) this.props.history.push("/");
+    if (loggedIn) this.props.history.push("/movies");
     console.log(loggedIn);
     return (
       <div className="background-container pt-5">

@@ -57,7 +57,7 @@ class Movies extends Component {
     filteredMovies = search(movies, searchFilter, "title");
     filteredMovies = categorize(filteredMovies, currentGenre);
     filteredMovies = filterRating(filteredMovies, rating);
-
+    if (!loggedIn) this.props.history.push("/login");
     return (
       <div className="background-container">
         <div className="mx-5 py-5">

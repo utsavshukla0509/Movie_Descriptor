@@ -1,0 +1,30 @@
+.main-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1284px;
+    background-color:#343a40;
+}
+.blk-maintitle-para{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 15cm;
+}
+.imgStyle{
+width: 15cm;
+height: 15cm;
+}
+.mainTitle{
+width: 17cm;
+height: 1cm;
+font-weight: bold;
+text-align: center;
+margin-top: 30px;
+}
+.para{
+    text-align: center;
+    margin-top: 150px;
+    font-size: 40px;
+}
