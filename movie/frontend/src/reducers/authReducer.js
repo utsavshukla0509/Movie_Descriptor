@@ -7,7 +7,7 @@ import {
 } from "../actions/actionTypes";
 
 const initState = {
-  loggedIn: false,
+  loggedIn: (localStorage.getItem('loggedIn')==='true') || false,
   userData: {},
   authMessage: null,
 };

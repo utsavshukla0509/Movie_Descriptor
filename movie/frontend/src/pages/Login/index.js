@@ -14,8 +14,6 @@ class Login extends React.Component {
       password: "",
     },
     errors: {},
-    chkEmail:localStorage.getItem('chkemail') || '',           //for local Storage
-    chkLoggedIn: localStorage.getItem('chkloggedIn') || false,        //for local storage
   };
 
   schema = {
@@ -55,29 +53,18 @@ class Login extends React.Component {
     return errors;
   };
   handleSubmit = (e) => {
-    console.log(e);
+    // console.log(e);
     e.preventDefault();
     const errors = this.validate();
     if (_.isEmpty(errors)) this.props.signIn(this.state.data);
   };
 
-  saveUserDetais(userData){
-    // console.log(userData);
-  //   this.props
-    // this.setState({
-    //     chkEmail:userData.email,
-    //     chkLoggedIn: true
-    // });
-    localStorage.setItem('loggedIn', true);
-    localStorage.setItem('email',userData.email);
-  }
-
-  checkLogout(){
-    // this.setState({
-    //   chkLoggedIn: false,
-    // });
-    // localStorage.setItem('loggedIn', false);
-    // localStorage.setItem('email', '');
+  saveUserDetais(userData,loggedIn){
+    if(loggedIn){
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('email',userData.email);
+      localStorage.setItem('name',userData.name);
+    }
   }
 
 
@@ -86,12 +73,12 @@ class Login extends React.Component {
     const { email, password } = data;
     const { authMessage, loggedIn,userData} = this.props;
     if (loggedIn) this.props.history.push("/movies");
-    console.log(loggedIn);
+    // console.log(loggedIn);
     return (
       <div className="background-container pt-5">
         <div className="container">
           <h1 className="header">Login</h1>
-          <form onSubmit={this.handleSubmit} onClick={this.saveUserDetais(userData)}>
+          <form onSubmit={this.handleSubmit} onClick={this.saveUserDetais(userData,loggedIn)}>
             <Input
               name="email"
               label="Email"
