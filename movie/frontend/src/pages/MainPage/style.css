@@ -1,20 +1,20 @@
-.main-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 1284px;
-    background-color:#343a40;
-}
 .blk-maintitle-para{
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
-    width: 15cm;
+    width: 37%;
+    float: left;
+}
+.imgBoxStyle{
+    position: relative;
+    padding-left: 60%;
+    padding-top: 2%;
 }
 .imgStyle{
-width: 15cm;
+width: 12cm;
 height: 15cm;
+border-radius: 10%;
+z-index: 0;
 }
 .mainTitle{
 width: 17cm;

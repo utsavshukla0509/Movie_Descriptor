@@ -14,6 +14,8 @@ class Login extends React.Component {
       password: "",
     },
     errors: {},
+    chkEmail:localStorage.getItem('chkemail') || '',           //for local Storage
+    chkLoggedIn: localStorage.getItem('chkloggedIn') || false,        //for local storage
   };
 
   schema = {
@@ -53,22 +55,43 @@ class Login extends React.Component {
     return errors;
   };
   handleSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
     const errors = this.validate();
     if (_.isEmpty(errors)) this.props.signIn(this.state.data);
   };
 
+  saveUserDetais(userData){
+    // console.log(userData);
+  //   this.props
+    // this.setState({
+    //     chkEmail:userData.email,
+    //     chkLoggedIn: true
+    // });
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('email',userData.email);
+  }
+
+  checkLogout(){
+    // this.setState({
+    //   chkLoggedIn: false,
+    // });
+    // localStorage.setItem('loggedIn', false);
+    // localStorage.setItem('email', '');
+  }
+
+
   render() {
     const { data, errors } = this.state;
     const { email, password } = data;
-    const { authMessage, loggedIn } = this.props;
+    const { authMessage, loggedIn,userData} = this.props;
     if (loggedIn) this.props.history.push("/movies");
     console.log(loggedIn);
     return (
       <div className="background-container pt-5">
         <div className="container">
           <h1 className="header">Login</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} onClick={this.saveUserDetais(userData)}>
             <Input
               name="email"
               label="Email"
@@ -102,6 +125,7 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.auth.loggedIn,
     authMessage: state.auth.authMessage,
+    userData: state.auth.userData,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -111,3 +135,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+
