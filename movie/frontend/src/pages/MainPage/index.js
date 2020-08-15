@@ -7,7 +7,7 @@ class MainPage extends React.Component{
 
     render(){
         return(
-            <div className="main-container">
+            <div className="background-container">
                 
                 <div className={"blk-maintitle-para"}>
                         <div class={"mainTitle"}>
@@ -22,7 +22,7 @@ class MainPage extends React.Component{
                         </p>
                 </div>
                 
-                <div>
+                <div class = {"imgBoxStyle"}>
                 <img src={img} alt={"logo"} class={"imgStyle"}/>
                 </div>
                     
