@@ -10,6 +10,37 @@
     padding-left: 60%;
     padding-top: 2%;
 }
+.arrowBoxCommon{
+opacity: 1;
+pointer-events: auto;
+border-width: 1px;
+border-style: solid;
+position: absolute;
+z-index: 5;
+padding-right: 0.75rem;
+padding-bottom: 1.25rem;
+padding-left: 0.75rem;
+top: 45%;
+border-radius:10%;
+border-color:lightslategray;
+height:1.5cm;
+width: 1cm;
+background-color: #343a40;
+}
+.rightArrowBox{
+right:5%;
+}
+.mainRightArrow{
+color: white;
+padding-top: 1.35rem;
+}
+.mainLeftArrow{
+color: white;
+padding-top: 1.35rem;
+}
+.leftArrowBox{
+left:60.3%;
+}
 .imgStyle{
 width: 12cm;
 height: 15cm;
