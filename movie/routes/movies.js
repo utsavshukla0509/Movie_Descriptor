@@ -1,10 +1,24 @@
 const express = require("express");
 const router = express.Router();
 // const checkAuth = require("../middleware/checkAuth");
-const { getAllMovies, addMovie } = require("../controller/movie");
+const { GetAllMovies } = require("../controller/movie/getAllMovies");
+const { AddMovie } = require("../controller/movie/addMovie");
 
-router.get("/", getAllMovies);
-router.post("/addmovie", addMovie);
+
+const getAllMovies = new GetAllMovies();
+const addMovie = new AddMovie();
+
+
+router.get("/", (req,res) => {
+    getAllMovies.handleRequest(req,res);
+});
+
+
+router.post("/addmovie", (req,res) => {
+    addMovie.handleRequest(req,res);
+});
+
+
 
 module.exports = router;
 

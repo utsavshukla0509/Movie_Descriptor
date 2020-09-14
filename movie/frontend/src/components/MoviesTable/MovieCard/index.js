@@ -15,7 +15,7 @@ export default function ({ movie }) {
     trailerLink,
     movieLength,
   } = movie;
-
+// console.log(typeof image.data);
   const encodedImage = new Buffer(image.data, "binary").toString("base64");
   const coverImage = "data:image/jpeg;base64," + encodedImage;
 

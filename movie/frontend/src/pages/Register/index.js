@@ -49,6 +49,7 @@ class RegisterForm extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    // console.log();
     const {username, password, passwordRepeat, email } = this.state.data;
     if (password !== passwordRepeat)
       this.setState({ passwordError: "The passwords doesn not match." });
