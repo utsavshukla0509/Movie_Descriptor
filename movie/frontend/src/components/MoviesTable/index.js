@@ -8,7 +8,6 @@ export default function MoviesTable({ movies, currentPage, pageSize }) {
     (currentPage - 1) * pageSize,
     pageSize * currentPage
   );
-
   return (
     <div className="movies-grid">
       {!!movies &&

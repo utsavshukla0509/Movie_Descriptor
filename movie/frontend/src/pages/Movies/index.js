@@ -42,7 +42,7 @@ class Movies extends Component {
     } = this.state;
 
     const { movies, genres, loggedIn } = this.props;
-
+    // console.log(movies);
     if (_.isEmpty(movies)) {
       return (
         <div className="background-container pt-5" >

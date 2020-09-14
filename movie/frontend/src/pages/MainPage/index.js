@@ -7,21 +7,45 @@ import { getMovies } from "../../actions/moviesAction";
 import { getGenres } from "../../actions/genreAction";
 
 class MainPage extends React.Component{
-  
+    state = {
+        index : 0,
+      };
     componentDidMount() {
         this.props.getMovies();
       }
 
       onRightClick(movies){
-          console.log("right");
+        const ind = this.state.index
+        if(ind === movies.length){
+            this.setState({index:0})
+        }else{
+            this.setState({index:ind + 1})
+        }
       }
       onLeftClick(movies){
-        console.log("left");
+        const ind = this.state.index
+        if(ind === 0){
+            this.setState({index:movies.length})
+        }else{
+            this.setState({index : ind - 1})
+        }
     }
+
+    
 
     render(){
         const { movies,loggedIn } = this.props;
-        // console.log(movies[1]);
+        // var movieList = []
+        
+        // movies.map((movie) => (
+        //    movieList.push(movie.image.data)
+        // ))
+        // console.log(movieList[0]);
+        const coverImage = img;
+        
+            // const encodedImage = new Buffer(toString(movieList[0]), "binary").toString("base64");
+            // const coverImage = "data:image/jpeg;base64," + encodedImage;
+        
         return(
             <div className="background-container">
                 
@@ -39,14 +63,14 @@ class MainPage extends React.Component{
                 </div>
                 
                 <div class = {"imgBoxStyle"}>
-                        <div class={"rightArrowBox arrowBoxCommon "} onClick = {this.onRightClick}>
+                        <div class={"rightArrowBox arrowBoxCommon "} onClick={()=>{this.onRightClick(movies)}}>
                             <div class={"mainRightArrow fa fa-arrow-right"}/>
                         </div>
-                        <div class={"leftArrowBox arrowBoxCommon"} onClick = {this.onLeftClick}>
+                        <div class={"leftArrowBox arrowBoxCommon"} onClick={()=>{this.onLeftClick(movies)}}>
                             <div class={"mainLeftArrow fa fa-arrow-left"}/>
-                        </div>
-                    <img src={img} alt={"logo"} class={"imgStyle"}/>
-                </div>   
+                        </div>  
+                        <img src={coverImage} alt={"logo"} class={"imgStyle"}/>
+                    </div>   
             </div>
         )
     }
