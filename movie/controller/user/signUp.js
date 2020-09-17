@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 require('dotenv').config();
+const Helper = require('../../utilities/helper');
+const helper = new Helper();
 
 
 class SignUp{
@@ -12,7 +14,7 @@ class SignUp{
         User.findOne({ email }) //Checking if the email exist
             .then((user) => {
             if (user)
-                res.status(409).json({ error: "The entered Email already exist!" });
+                helper.writeResponse({code: 400, msg : 'The entered Email already exist!'},null, res);
             else {
                 //Hashing the password
                 bcrypt.hash(password, 10, (error, hash) => {
@@ -55,13 +57,13 @@ class SignUp{
                         })
                         .then((info) => console.log("Email has been sent!",info))
                         .catch((err) => console.log(err));
-                        res.status(201).json({
+                        helper.writeResponse(null,{
                         message: "The user has been signed up successfully!",
                         userData,
                         favouriteMovies: [],
-                        });
+                        }, res);
                     })
-                    .catch((error) => res.status(500).json({ error }));
+                    .catch((error) => this.writeResponse({code: 500,msg : error} ,null, res));
                 }
                 });
             }

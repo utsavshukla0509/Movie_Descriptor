@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
 const Movie = require("../../models/movie");
+const Helper = require('../../utilities/helper');
+
+const helper = new Helper();
 
 
 class GetAllMovies{
     handleRequest(req, res) {
     Movie.find()
       .then((movies) =>
-        res.status(200).json({
+        helper.writeResponse(null,{
           count: movies.length,
-          movies: movies,
-        })
+            movies: movies,
+        }, res)
       )
-      .catch((err) => res.status(500).json({ error: err }));
+      .catch((err) => this.writeResponse({code: 500,msg : error} ,null, res));
     }
   };
 

@@ -1,6 +1,7 @@
 const User = require("../../models/user");
 const mongoose = require("mongoose");
-
+const Helper = require('../../utilities/helper');
+const helper = new Helper();
 
 
 class UpdateUser{
@@ -14,13 +15,13 @@ class UpdateUser{
     //   result
     // })
     (result)=>{
-      res.status(200).json({
-      message:"successfully updated",
-      result
-      })
+      helper.writeResponse(null,{
+        message:"successfully updated",
+        result
+      }, res);
     }
     )
-    .catch((error) => res.status(409).json(error));
+    .catch((error) => this.writeResponse({code: 500,msg : error} ,null, res));
     }
 };
 
