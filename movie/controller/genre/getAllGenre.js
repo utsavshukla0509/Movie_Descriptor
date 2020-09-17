@@ -5,9 +5,9 @@ class GetAllGenres {
     handleRequest(req,res){
         Genre.find()
         .then((docs) => {
-            return res.status(200).json(docs);
+            return helper.writeResponse(null,{message: docs}, res)
         })
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => this.writeResponse({code: 500,msg : error} ,null, res));
     }
 };
 

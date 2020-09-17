@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Genre = require("../../models/genre");
+const Helper = require('../../utilities/helper');
+
+const helper = new Helper();
 
 
 class AddGenre{
@@ -12,13 +15,10 @@ class AddGenre{
       genre
       .save()
       .then(() =>
-        res.status(201).json({ message: "Genre added successfuly to MongoDB" })
+        helper.writeResponse(null,{message: "Genre added successfuly to MongoDB"}, res)
       )
       .catch((error) =>
-        res.status(500).json({
-          message: "Something went wrong when adding to MongoDB",
-          error,
-        })
+        helper.writeResponse({msg :"Something went wrong when adding to MongoDB"},null, res)
       );
     }
   };

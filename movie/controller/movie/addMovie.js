@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Movie = require("../../models/movie");
 const multer = require("multer");
 const fs = require("fs");
+const Helper = require('../../utilities/helper');
+
+const helper = new Helper();
 
 
 const storage = multer.diskStorage({
@@ -19,7 +22,7 @@ const storage = multer.diskStorage({
     handleRequest(req, res) {
         // console.log(req);
         upload(req, res, (err) => {
-        if (err) res.status(500).json(err);
+        if (err) this.writeResponse({code: 500,msg : err} ,null, res);
         else {
             fs.readFile(req.file.path, function (err, data) {
             if (err) throw err; 
@@ -39,12 +42,12 @@ const storage = multer.diskStorage({
     
                 //Saving new movie in db
                 newMovie.save((err, movie) => {
-                if (err) res.status(500).json({ error: err });
+                if (err) this.writeResponse({code: 500,msg : err} ,null, res);
                 else {
-                    res.status(201).json({
+                  helper.writeResponse(null,{
                     message: "A new movie added.",
                     movie: movie,
-                    });
+                  }, res);
                 }
                 });
             }
