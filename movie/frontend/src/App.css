@@ -4,8 +4,9 @@ body {
 
 .background-container {
   scroll-behavior: smooth;
-  background: #343a40;
+  background: white;
   min-height: 100vh;
-  height: fit-content;
+  /* height: fit-content; */
+  overflow: hidden;
 }
 

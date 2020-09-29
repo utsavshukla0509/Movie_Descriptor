@@ -145,6 +145,13 @@
   padding: 20px 0 20px 0;
   text-transform: capitalize;
   list-style-type: none;
-  border-bottom: 0.1px solid rgb(240, 98, 73);
+  border-bottom: 0.1px solid blue;
 }
 
+.mainTitle{
+  height: 2cm;
+  width:25cm;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 20px;
+  }
