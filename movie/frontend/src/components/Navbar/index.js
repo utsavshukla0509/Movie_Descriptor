@@ -47,6 +47,10 @@ function Navbar(props) {
         (props.userData.name !== undefined ? props.userData.name : localStorage.getItem('name'))
       }</h5>):("")}
       
+      <div class={"mainTitle"}>
+          <h3 style={{color:"#0e76bc"}}>Welcome to Movie Descriptor</h3>
+      </div>
+
       <div id="slider" className="slider">
         <ul className="list">
           <Link onClick={toggleNav} to="/">

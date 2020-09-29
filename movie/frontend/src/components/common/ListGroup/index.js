@@ -3,7 +3,7 @@ import './style.css';
 
 const ListGroup = props => {
   let { onChange, active, options } = props;
-  
+  console.log(options);
   options.sort();
   return ( 
     <div className="list-group">  
